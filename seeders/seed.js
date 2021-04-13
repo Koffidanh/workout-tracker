@@ -1,7 +1,7 @@
 let mongoose = require("mongoose");
 let db = require("../models");
-
-mongoose.connect("mongodb://localhost/workout", {
+require('dotenv').config()
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://DB_USER:DB_PASS@cluster0.4tjku.mongodb.net/workout?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useFindAndModify: false
 });

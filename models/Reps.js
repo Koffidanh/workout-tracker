@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const RepsSchema = new Schema({
-  reps: INTEGER,
+  reps: Number,
  });
 
 const Reps = mongoose.model("Reps", RepsSchema);
