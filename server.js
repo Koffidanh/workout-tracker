@@ -13,12 +13,13 @@ app.use(express.json());
 
 // routes
 app.use(require("./routes/api.js"));
-//app.use(require("./routes/htmlRoutes"));
+app.use(require("./routes/htmlRoutes"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://DB_USER:DB_PASS@cluster0.4tjku.mongodb.net/workout?retryWrites=true&w=majority", {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
+// mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://DB_USER:DB_PASS@cluster0.4tjku.mongodb.net/workout?retryWrites=true&w=majority", {
+//   useNewUrlParser: true,
+//   useFindAndModify: false,
+//   useUnifiedTopology: true
+// });
 
 
 app.listen(PORT, () => {
