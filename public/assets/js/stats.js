@@ -191,6 +191,22 @@ function calculateTotalWeight(data) {
   return totals;
 }
 
+function calculateDuration(data) {
+  let totalDurations = [];
+
+  data.forEach((workout) => {
+    const workoutTotalDuration = workout.exercises.reduce((totalDuration, { type, duration }) => {
+
+      return totalDuration;
+
+    }, 0);
+
+    totalDurations.push(workoutTotalDuration);
+  });
+
+  return totalDurations;
+}
+
 function workoutNames(data) {
   let workouts = [];
 
