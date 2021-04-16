@@ -1,4 +1,4 @@
-//const app = require("express");
+
 
 const API = {
     async getLastWorkout() {
@@ -44,5 +44,5 @@ const API = {
       return json;
     },
   };
-  //module.exports = app;
+  
   
