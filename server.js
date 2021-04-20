@@ -5,7 +5,7 @@ const path = require("path");
 require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
-const db = require("./models")
+const db = require("./models/Workout")
 
 
 app.use(express.static("public"));
@@ -32,7 +32,7 @@ app.get("/exercise", function (req, res) {
 });
 //
 app.get("/api/workouts", (req, res) => {
-  db.Workout.aggregate([{
+  db.aggregate([{
     $addFields:{
       totalDuration: {$sum: "$exercises.duration"}
     }
@@ -52,7 +52,7 @@ app.get("/api/workouts", (req, res) => {
 });
 //
 app.post("/api/workouts", ({body}, res) => {
-  db.Workout.create(body)
+  db.create(body)
     .then(dbWorkout => {
       res.json(dbWorkout);
     })
@@ -62,7 +62,7 @@ app.post("/api/workouts", ({body}, res) => {
 });
 //
 app.get("/api/workouts/range", (req, res) => {
-  db.Workout.aggregate([{
+  db.aggregate([{
       $addFields:{
         totalDuration: {$sum: "$exercises.duration"}
       }
@@ -76,7 +76,7 @@ app.get("/api/workouts/range", (req, res) => {
 });
 //
 app.put("/api/workouts/:id", ({ body, params }, res) => {
-  db.Workout.findByIdAndUpdate(params.id,
+  db.findByIdAndUpdate(params.id,
    {$push:{exercises: body}},
    {new:true} )
     .then(dbWorkout => {
