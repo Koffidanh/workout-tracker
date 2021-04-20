@@ -5,7 +5,7 @@ const path = require("path");
 require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
-const db = require("/models/Workout.js")
+const db = require("models/Workout.js")
 
 
 app.use(express.static("public"));
